@@ -22,6 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            // $table->renameColumn('name', 'user_name'); //This is method for renaming but Maria DB doesn't support this so alternative we use the below query
             DB::statement('ALTER TABLE `users` CHANGE `user_name` `name` VARCHAR(255);');
         });
     }
